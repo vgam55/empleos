@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado</title>
+</head>
+<body>
+    <table>
+        <tr th:each="empleo:${empleos}">
+            <td>1</td>
+            <td th:text="${empleo}"></td>
+        </tr>
+    </table>
+</body>
+</html>
