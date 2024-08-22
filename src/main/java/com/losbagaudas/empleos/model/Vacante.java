@@ -10,6 +10,8 @@ public class Vacante {
     private double sueldo;
     private Integer destacado;
     private String imagen="no-image.png";
+    private String estatus;
+    private String detalles;
 
     public String getImagen() {
         return imagen;
@@ -21,6 +23,22 @@ public class Vacante {
 
     public Integer getDestacado() {
         return destacado;
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
+
+    public String getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(String detalles) {
+        this.detalles = detalles;
     }
 
     public void setDestacado(Integer destacado) {
@@ -69,10 +87,10 @@ public class Vacante {
 
     @Override
     public String toString() {
-        String vacante="Nombre: "+this.nombre+"/n"
-                        +"Descripción: "+this.descripcion
-                        +"Fecha: "+this.fecha
-                        +"Sueldo: "+this.sueldo;
+        String vacante="Nombre: "+this.nombre+"\n"
+                        +"Descripción: "+this.descripcion+"\n"
+                        +"Fecha: "+this.fecha+"\n"
+                        +"Sueldo: "+this.sueldo+"\n";
         return vacante;
     }
 }

@@ -13,22 +13,15 @@
     <table class="table">
         <tr>
             <td>Id</td>
-            <td>Imagen</td>
             <td>Logo</td>
             <td>Nombre</td>
             <td>Descripción</td>
             <td>Salario</td>
             <td>Fecha</td>
             <td>Destacada</td>
+            <td>Detalle</td>
+            <td>Borrar</td>
         </tr>
-     <!--  <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-        </tr>-->
        <tr th:each="vacante:${vacantes}">
             <td th:text="${vacante.id}"></td>
             <!--<td th:text="${vacante.imagen}"></td>-->
@@ -40,11 +33,16 @@
             <td th:text="${vacante.descripcion}"></td>
             <td th:text="${vacante.sueldo}"></td>
             <td th:text="${vacante.fecha}"></td>
+
            <!-- <td th:text="${vacante.destacado}"></td>-->
-          <!-- <td th:text="${vacante.destacado==1 ? 'SI' : 'NO'}"></td>-->
+          <!-- <td th:text=""${teacher.additionalSkills} ?: 'UNKNOWN'"</td>-->
            <td>
                <span th:if="${vacante.destacado==1}" class="badge badge-success">Si</span>
                <span th:unless="${vacante.destacado==1}" class="badge badge-danger">No</span>
+           </td>
+           <td> <a th:href="@{/vacantes/view/{id} (id=${vacante.id})}" class="btn btn-success">Ver detalle</a></td>
+           <td>
+               <a th:href="@{/vacantes/delete(id=${vacante.id})}"   class="btn btn-danger">Borrar</a>
            </td>
         </tr>
     </table>

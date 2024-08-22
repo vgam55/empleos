@@ -1,6 +1,8 @@
 package com.losbagaudas.empleos.controller;
 
 import com.losbagaudas.empleos.model.Vacante;
+import com.losbagaudas.empleos.service.IVacanteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,18 +13,14 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+    @Autowired
+    private IVacanteService vacanteService=null;
     @GetMapping("/")
     public String mostrarHome(Model model)
     {
-        String mensaje="Auxiliar Contabilidad";
-        Date fechaPub=new Date();
-        double salario=9000.50;
-        boolean vigente=true;
-        model.addAttribute("me");
-        model.addAttribute("mensaje",mensaje);
-        model.addAttribute("fecha", fechaPub);
-        model.addAttribute("salario",salario);
-        model.addAttribute("vigente", vigente);
+        List<Vacante>lista=vacanteService.buscarTodas();
+        System.out.println (lista);
+        model.addAttribute("vacantes",lista);
         return "index";
     }
 
@@ -52,12 +50,12 @@ public class HomeController {
     @GetMapping ("/tabla")
     public String mostraTabla(Model model)
     {
-        List<Vacante>lista=getVacante();
+        List<Vacante>lista=vacanteService.buscarTodas();
         model.addAttribute("vacantes",lista);
         return "tabla";
     }
 
-    private List<Vacante> getVacante()
+   /* private List<Vacante> getVacante()
     {
         LinkedList<Vacante>listaVacantes= new LinkedList<Vacante>();
         //Creamos una vacante
@@ -94,5 +92,5 @@ public class HomeController {
             listaVacantes.add(vacante3);
 
         return listaVacantes;
-    }
+    }*/
 }
